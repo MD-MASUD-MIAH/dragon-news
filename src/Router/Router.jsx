@@ -5,6 +5,11 @@ import CategoryNews from "../pages/CategoryNews/CategoryNews";
 import AuthLayout from "../layout/AuthLayout";
 import Login from "../comonenst/Login";
 import Register from "../comonenst/Register";
+import NewsDeatils from "../comonenst/layoutHome/NewsDeatils";
+import PriveteCo from "../context/PriveteCo";
+import About from "../comonenst/About";
+import Career from "../comonenst/Career";
+import Loader from "../comonenst/Loader";
 
 
 
@@ -18,16 +23,23 @@ export const router = createBrowserRouter([
 
             children:[
 
-    {path:'', Component: Home },
+   { path:'',Component:Home},
 
 
     {path:'/category/:id',
-        loader:()=>fetch('/news.json'),
-        Component:CategoryNews}
+       loader:()=>fetch('/news.json'),
+        Component:CategoryNews,
+        hydrateFallbackElement:<Loader></Loader>
+    
+    }
 
 
             ]
            },
+
+
+
+
 {
 
     path:'/auth',Component:AuthLayout, 
@@ -39,7 +51,27 @@ export const router = createBrowserRouter([
 
         {path:'/auth/register', Component:Register}
     ]
-}
+},
+
+{
+
+    path:'newsdeails/:id',
+    
+     loader:()=>fetch('/news.json'),
+
+
+    element:<PriveteCo>
+        <NewsDeatils></NewsDeatils>
+        </PriveteCo>, 
+        hydrateFallbackElement:<Loader></Loader>
+
+},
+{
+
+    path:'/about',Component:About
+},
+
+{path:'/career',Component:Career}
 
 
 

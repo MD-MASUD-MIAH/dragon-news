@@ -7,7 +7,10 @@ import NewsCard from '../../comonenst/layoutHome/NewsCard';
 
     const {id} = useParams()
 
-    const data = useLoaderData()
+    const data = useLoaderData()  
+
+  
+    
 
     const [ categoryNews,setCategoryNews] = useState([])
 
@@ -36,7 +39,7 @@ import NewsCard from '../../comonenst/layoutHome/NewsCard';
     }
  },[data,id])
 
-    console.log(data);
+   
     
     return (
         <div>

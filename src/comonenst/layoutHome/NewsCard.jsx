@@ -2,7 +2,7 @@ import { FaEye, FaStar } from 'react-icons/fa';
 import { CiBookmark } from "react-icons/ci";
 import { IoShareSocialOutline } from "react-icons/io5";
 import moment from 'moment'; 
-
+import { Link } from 'react-router';
 const NewsCard = ({ news }) => {
   const {
     title,
@@ -11,6 +11,7 @@ const NewsCard = ({ news }) => {
     details,
     rating,
     total_view,
+    id,
    
   } = news;
 
@@ -48,7 +49,7 @@ const NewsCard = ({ news }) => {
       {/* Details */}
       <p className="text-sm p-4 text-gray-700 border-b pb-3 border-base-300">
         {details.slice(0, 200)}...
-        <span className="text-blue-600 font-semibold cursor-pointer"> Read More</span>
+        <Link to={`/newsdeails/${id}`} className="text-blue-600 font-semibold cursor-pointer"> Read More</Link>
       </p>
 
       {/* Footer: Rating & Views */}
