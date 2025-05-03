@@ -9,6 +9,9 @@ const Navbar = () => {
   
   const {user,logout } = use(AuthContext) 
 
+ 
+  
+
   const handleLogout = ()=>{
 
 
@@ -26,7 +29,7 @@ const Navbar = () => {
     
   }
   
-  console.log(user);
+  
   
 
   
@@ -43,7 +46,7 @@ const Navbar = () => {
             <NavLink to='/career'>Career</NavLink>
           </div>
           <div className='login-btn flex gap-4'>
-            <img className='w-12 rounded-full' src={`${user?user.photoURL:userIcon}`} alt="" />
+            <img className='w-12 rounded-full' src={`${user?user.photoURL :userIcon}`} alt="" />
 
 
           {

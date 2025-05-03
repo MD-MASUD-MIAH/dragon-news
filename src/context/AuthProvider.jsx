@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile,signInWithPopup, GithubAuthProvider } from 'firebase/auth';
 import { auth } from '../freabase/firebase.init';
 
-const AuthProvider = ({children}) => {
 
-const [user,setUser] = useState(null)
-const [ loading,setLoading] = useState(true)
+const AuthProvider = ({children}) => {
+    const [breaking,setbraking] = useState([])
+    const [user,setUser] = useState(null)
+    const [ loading,setLoading] = useState(true)
+    
+   const provider = new GithubAuthProvider()
+
     const creatUser = (email,password)=>{
 
 setLoading(true)
@@ -14,7 +18,12 @@ setLoading(true)
     } 
 
 
+ const forgetPass =(email)=>{
 
+    return sendPasswordResetEmail(auth,email)
+
+
+ }
 
     useEffect(()=>{
 
@@ -34,6 +43,12 @@ setLoading(false)
     },[])
 
 
+    const loginGithub =()=>{
+
+setLoading(true) 
+return signInWithPopup(auth,provider)
+
+    }
 
     const  updateUser = (updataeData)=>{
 
@@ -42,7 +57,11 @@ setLoading(true)
     }
 
 
+const dataBraking =(news)=>{
 
+
+    setbraking(news)
+}
 
 
 const logout = ()=>{
@@ -51,10 +70,24 @@ setLoading(true)
     return signOut(auth)
 }
 
+
+const googleLongin =(provider)=>{
+
+
+    setLoading(true)
+return signInWithPopup(auth,provider)
+
+}
+
+
+
 const login = (email,password)=>{
 setLoading(true)
     return signInWithEmailAndPassword(auth,email,password)
 }
+
+console.log(user);
+
 const userInfo = {
 
 
@@ -65,6 +98,11 @@ const userInfo = {
     loading,
     updateUser,
     setUser,
+    dataBraking,
+    breaking,
+    forgetPass,
+    googleLongin,
+    loginGithub,
 
 }
 

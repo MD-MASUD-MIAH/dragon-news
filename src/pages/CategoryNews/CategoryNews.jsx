@@ -1,7 +1,8 @@
  
- import React, { useEffect, useState } from 'react';
+ import React, { use, useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import NewsCard from '../../comonenst/layoutHome/NewsCard';
+import { AuthContext } from '../../context/AuthContext';
  
  const CategoryNews = () => {
 
@@ -10,7 +11,7 @@ import NewsCard from '../../comonenst/layoutHome/NewsCard';
     const data = useLoaderData()  
 
   
-    
+    const { dataBraking} = use(AuthContext)
 
     const [ categoryNews,setCategoryNews] = useState([])
 
@@ -28,7 +29,9 @@ import NewsCard from '../../comonenst/layoutHome/NewsCard';
        
         const filtenewsa = data.filter(news=>news.others.is_today_pick == true) 
 
-        setCategoryNews(filtenewsa)
+        setCategoryNews(filtenewsa) 
+
+        dataBraking(filtenewsa)
     }else{
 
        
