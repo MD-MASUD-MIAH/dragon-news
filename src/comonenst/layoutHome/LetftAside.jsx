@@ -3,8 +3,8 @@ import Categories from './Categories';
 
 const LetftAside = () => {
     return (
-        <div>
-           <Suspense fallback={<span className="loading loading-dots loading-xl"></span>}>
+        <div >
+           <Suspense fallback={<span className="loading loading-dots loading-xl "></span>}>
 
            <Categories></Categories>
            </Suspense>

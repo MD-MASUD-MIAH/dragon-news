@@ -25,9 +25,9 @@ const NewsDeatils = () => {
             <Header></Header>
           </header>
 
-          <main className='grid grid-cols-12 gap-4 w-11/12 mx-auto'>
+          <main className='grid md:grid-cols-12 gap-4 w-11/12 mx-auto'>
 
-            <div className='col-span-9'>
+            <div className='  md:col-span-9'>
    <h1 className='text-xl font-bold mt-5 py-8'>Daragon News</h1>
 
        <DeailsCard newsdata ={newsdata}></DeailsCard>

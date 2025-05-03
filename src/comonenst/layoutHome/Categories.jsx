@@ -15,11 +15,11 @@ const Categories = () => {
         <div>
             <h2 className='font-bold'>All Categories</h2>
 
-            <div className='grid grid-cols-1 mt-5'>
+            <div className='md:grid md:grid-cols-1 grid  grid-cols-3 mt-5'>
                 {
 
                     categories.map(cat =><NavLink to={`/category/${cat.id}`} className="
-font-semibold text-accent btn bg-base-100 border-0 hover:bg-base-200" key={cat.id}>{cat.name}</NavLink>)
+font-semibold text-accent btn bg-base-100 border-0 text-xs md:text-[14px] hover:bg-base-200" key={cat.id}>{cat.name}</NavLink>)
                 }
             </div>
         </div>
